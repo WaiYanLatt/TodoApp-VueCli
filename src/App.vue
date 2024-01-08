@@ -30,32 +30,25 @@ export default {
   },
   methods: {
     addTodo(todoTitle) {
-      // Making sure that the todoTitle is not empty
       if (todoTitle.trim() === "") {
         alert("Please enter a todo title");
-        return; // This will exit the function and prevent the code below from running
+        return;
       }
       // Create a new todo object
       const newTodo = {
-        id: this.todos.length + 1, // Generate a unique id
+        id: this.todos.length + 1,
         title: todoTitle,
         completed: false,
       };
-      // Add the new todo to the todos array
       this.todos.push(newTodo);
-      // Reset the todoTitle property to an empty string using the $refs property
       this.$refs.todoInput.todoTitle = "";
     },
     deleteTodo(id) {
-      // Find the index of the todo with the given id
       const index = this.todos.findIndex((todo) => todo.id === id);
-      // Remove the todo from the todos array
       this.todos.splice(index, 1);
     },
     toggleTodo(id) {
-      // Find the index of the todo with the given id
       const index = this.todos.findIndex((todo) => todo.id === id);
-      // Toggle the completed property of the todo
       this.todos[index].completed = !this.todos[index].completed; // This will set it to the opposite of what it currently is (true to false and false to true)
     },
     setFilterStatus(status) {
@@ -64,8 +57,6 @@ export default {
   },
 };
 </script>
-
-
 
 <template>
   <NewTodoForm ref="todoInput" @submitTodo="addTodo" />
@@ -79,10 +70,12 @@ export default {
       @toggleTodo="toggleTodo(todo.id)"
     />
   </ul>
-  <TodoFilters :filterStatus="filterStatus" :totalTodos="totalTodos" @setFilter="setFilterStatus" />
+  <TodoFilters
+    :filterStatus="filterStatus"
+    :totalTodos="totalTodos"
+    @setFilter="setFilterStatus"
+  />
 </template>
-
-
 
 <style scoped>
 .todo-list {

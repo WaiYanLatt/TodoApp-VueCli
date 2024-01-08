@@ -8,6 +8,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <form action="#" @submit.prevent="$emit('submitTodo', todoTitle)">
     <input
@@ -18,6 +19,8 @@ export default {
     />
   </form>
 </template>
+
+
 <style scoped>
 .main-input {
   width: 500px;
